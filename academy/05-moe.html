@@ -8,15 +8,34 @@
   <link rel="stylesheet" href="../css/site.css" />
 </head>
 <body>
-<header class="nav"><div class="wrap nav-inner"><a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a><nav class="nav-links"><a href="../academy.html">Academy</a></nav></div></header>
+<header class="nav"><div class="wrap nav-inner">
+<a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
+<nav class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../moerverse.html">Moerverse</a>
+<a href="../scanner.html">Scanner</a>
+<a href="../academy.html">Academy</a>
+<a href="../flip.html">Flip Game</a>
+<a href="../about.html">About</a>
+</nav>
+<button class="btn ghost" data-connect data-wallet-label>Connect wallet</button>
+</div></header>
 <main class="page wrap lesson">
 <p class="kicker">Based Moer Academy</p>
-<h2>05 · How Moe AI reads a setup</h2>
-<p>Scan top-volume USDT pairs on 4H. Find latest BOS. Build the leg. Filter age (max 10 candles), RR floor 1.1, and one open signal per pair via the API. Then Discord + Supabase.</p>
-<p>The scanner does not post SL or miss alerts to Discord on purpose. Those states still live in the database so learning can happen later.</p>
-<p>Read live rules on the <a href="../scanner.html">Scanner page</a>.</p>
+<h2>05 · How Moe AI reads a setup</h2><p>Scan top-volume USDT pairs on 4H. Latest BOS. Age max 10 candles. RR floor 1.1. One open signal per pair via the API. Then Discord + Supabase.</p><p>SL and miss states stay in the database even when Discord stays quiet.</p>
 <p><a href="../academy.html">Back to Academy</a></p>
 </main>
-<footer class="footer"><div class="wrap"><img src="../assets/logo.jpg" alt="" style="width:20px;vertical-align:middle" /> Based Moer Academy · education only · not financial advice</div></footer>
+<footer class="footer"><div class="wrap">
+<div class="tech-logos">
+<img src="../assets/icons/python.svg" alt="Python" />
+<img src="../assets/icons/fastapi.svg" alt="FastAPI" />
+<img src="../assets/icons/supabase.svg" alt="Supabase" />
+<img src="../assets/icons/railway.svg" alt="Railway" />
+<img src="../assets/icons/vercel.svg" alt="Vercel" />
+<img src="../assets/icons/github.svg" alt="GitHub" />
+<img src="../assets/icons/base.jpg" alt="Base" />
+</div>
+Based Moer Academy · education only · not financial advice
+</div></footer>
 <script src="../js/site.js"></script>
 </body></html>
