@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moe AI Scanner — Based Moer</title>
+  <title>Moe AI Live — Based Moer</title>
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
@@ -15,7 +15,7 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="moerverse.html">Moerverse</a>
-        <a href="scanner.html">Scanner</a>
+        <a class="active" href="scanner.html">Scanner</a>
         <a href="academy.html">Academy</a>
         <a href="flip.html">Flip Game</a>
         <a href="about.html">About</a>
@@ -24,34 +24,48 @@
     </div>
   </header>
   <main class="page wrap">
-
-<p class="kicker">Moe AI · Phase 1</p>
-<h2>Scanner</h2>
-<p>Live 4H market-structure scanner on Kraken USDT pairs. Built toward an explainable protocol on Base.</p>
-<video class="media" controls muted playsinline style="margin:18px 0"><source src="assets/moe-ai.mp4" type="video/mp4" /></video>
-<div class="cards">
-<article class="card"><h3>Rules</h3><p>Full breakout leg with wicks. Entry 0.50–0.786. SL at origin. TP Fib 1.59. Min RR 1.1. One open signal per pair.</p></article>
-<article class="card"><h3>Watch</h3><p><a href="https://discord.gg/B6Pu9fARTX" target="_blank" rel="noreferrer">Discord</a> for setups. API: <a href="https://moe-ai-production.up.railway.app/docs" target="_blank" rel="noreferrer">Railway docs</a>.</p></article>
-<article class="card"><h3>Honesty</h3><p>Sample is still small. This is not a guarantee and not financial advice.</p></article>
-</div>
-
-  </main>
-  <footer class="footer">
-    <div class="wrap">
-      <div class="tech-logos">
-        <img src="assets/icons/python.svg" alt="Python" />
-        <img src="assets/icons/fastapi.svg" alt="FastAPI" />
-        <img src="assets/icons/supabase.svg" alt="Supabase" />
-        <img src="assets/icons/railway.svg" alt="Railway" />
-        <img src="assets/icons/vercel.svg" alt="Vercel" />
-        <img src="assets/icons/github.svg" alt="GitHub" />
-        <img src="assets/icons/base.jpg" alt="Base" />
-        <img src="assets/icons/kraken.svg" alt="Kraken" />
-        <img src="assets/icons/html.svg" alt="HTML" />
-      </div>
-      Based Moer · built on Base · not financial advice · always DYOR
+    <p class="kicker">Moe AI market engine</p>
+    <h2>MARKET DATA. LIVE.</h2>
+    <p>The Moe AI Live Engine displays current scanner activity from the existing market-structure system. Only information returned by the Moe AI API is shown.</p>
+    <div class="engine-meta">
+      <article class="card"><span>ENGINE</span><b id="engine-status">…</b></article>
+      <article class="card"><span>SCANNER</span><b id="tf-label">4H</b></article>
+      <article class="card"><span>MARKET DATA</span><b id="market-label">KRAKEN</b></article>
+      <article class="card"><span>OPEN SETUPS</span><b id="open-count">—</b></article>
     </div>
-  </footer>
+    <p>Last update <span id="last-update">—</span></p>
+    <p><button class="btn" id="refresh-engine" type="button">Refresh engine</button>
+       <a class="btn ghost" href="https://moe-ai-production.up.railway.app/docs" target="_blank" rel="noreferrer">API docs</a></p>
+    <p class="err" id="engine-error"></p>
+
+    <h3 style="margin:22px 0 8px">Current open setups</h3>
+    <div class="table-wrap">
+      <table class="engine">
+        <thead>
+          <tr>
+            <th>Market</th><th>Direction</th><th>TF</th>
+            <th>Entry zone</th><th>Invalidation</th><th>Target</th>
+            <th>Status</th><th>Updated</th>
+          </tr>
+        </thead>
+        <tbody id="setup-rows"><tr><td colspan="8">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="cards" style="margin-top:22px">
+      <article class="card"><h3>Engine activity</h3><p id="activity-open">—</p><p>Data refreshed <span id="activity-refresh">—</span></p></article>
+      <article class="card"><h3>How the engine reads a setup</h3>
+        <p>1 Identify meaningful 4H market structure.<br>
+        2 Detect the latest valid Break of Structure.<br>
+        3 Measure the breakout leg.<br>
+        4 Monitor the configured retracement zone.<br>
+        5 Track entry, invalidation, target and signal lifecycle.</p>
+      </article>
+      <article class="card"><h3>Honesty</h3><p>Open does not mean filled. Always DYOR. Not financial advice.</p></article>
+    </div>
+  </main>
+  <footer class="footer"><div class="wrap">Based Moer · built on Base · not financial advice · always DYOR</div></footer>
   <script src="js/site.js"></script>
+  <script src="js/scanner.js"></script>
 </body>
 </html>
