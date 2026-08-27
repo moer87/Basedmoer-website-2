@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Based Moer</title>
-  <meta name="description" content="Based Moer is built solo: pixel art, Moe AI, and a Base-native universe." />
+  <meta name="description" content="Solo studio behind Based Moer and Moe AI." />
   <link rel="canonical" href="https://basedmoer.com/about.html" />
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -15,12 +15,15 @@
   <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="scanner.html">Moe AI</a>
     <a href="moerverse.html">Moerverse</a>
-    <a href="academy.html">Academy</a>
-    <a class="active" href="about.html">About</a>
+    <a class="gated-link" hidden href="scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="flip.html">Flip</a>
+    <a href="about.html" class="active">About</a>
   </nav>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
+
 <main class="page wrap">
   <p class="kicker">Studio</p>
   <h2>One builder. One name.</h2>
@@ -28,18 +31,32 @@
     <article class="card">
       <img src="assets/founder.png" alt="Moe" style="width:160px" />
       <h3 style="margin-top:12px">Moe</h3>
-      <p>Artist and product lead. <a href="https://x.com/MoeeR87">@MoeeR87</a></p>
+      <p><a href="https://x.com/MoeeR87">@MoeeR87</a></p>
     </article>
     <article class="card">
-      <h3>Stack</h3>
-      <p>Python, FastAPI, Supabase, Railway, Vercel, GitHub, Kraken data, Base for what goes on-chain.</p>
-      <p style="margin-top:12px"><a href="https://discord.gg/B6Pu9fARTX">Discord</a><br>
-      <a href="https://x.com/basedmoer">@basedmoer</a><br>
-      <a href="https://x.com/basedapepunks">@basedapepunks</a></p>
+      <h3>Holders</h3>
+      <p>Connect a wallet on Base. If it holds Based Ape Punks, Moe AI, Academy and Flip appear in the header.</p>
+      <p style="margin-top:12px"><a href="https://discord.gg/B6Pu9fARTX">Discord</a></p>
     </article>
   </div>
 </main>
-<footer class="footer"><div class="wrap">basedmoer.com</div></footer>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><strong>Based Moer</strong><p>Pixel universe and market-structure engine on Base. Not financial advice.</p></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="moerverse.html">Moerverse</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
+      <a href="https://x.com/basedmoer">X · Based Moer</a>
+      <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Ape Punks contract</a>
+    </div>
+  </div>
+  basedmoer.com · Base
+</div></footer>
 <script src="js/site.js"></script>
-</body>
-</html>
+<script src="js/gate.js"></script>
+
+</body></html>

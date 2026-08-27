@@ -9,10 +9,24 @@
 </head>
 <body>
 <header class="nav"><div class="wrap nav-inner">
-<a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
-<nav class="nav-links"><a href="../academy.html">Academy</a></nav>
+  <a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
+  <nav class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../moerverse.html">Moerverse</a>
+    <a class="gated-link" hidden href="../scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="../academy.html">Academy</a>
+    <a class="gated-link" hidden href="../flip.html">Flip</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
 <main class="page wrap lesson">
+<div class="holder-gate" id="holder-gate">
+  <h2>Holders only</h2>
+  <p>Connect a wallet on Base that holds Based Ape Punks.</p>
+  <p><button class="btn" type="button" data-connect>Connect wallet</button></p>
+</div>
+<div class="holder-only">
 <p class="kicker">Based Moer Academy</p>
 <h2>Exam</h2>
 <form id="exam" onsubmit="event.preventDefault(); gradeQuiz('exam');">
@@ -40,6 +54,8 @@
 </form>
 <p id="quiz-result"></p>
 <p><a href="../academy.html">Back to Academy</a></p>
+</div>
 </main>
 <script src="../js/site.js"></script>
+<script src="../js/gate.js"></script>
 </body></html>

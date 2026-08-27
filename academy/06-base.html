@@ -9,24 +9,31 @@
 </head>
 <body>
 <header class="nav"><div class="wrap nav-inner">
-<a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
-<nav class="nav-links">
-<a href="../index.html">Home</a>
-<a href="../moerverse.html">Moerverse</a>
-<a href="../scanner.html">Scanner</a>
-<a href="../academy.html">Academy</a>
-<a href="../flip.html">Flip Game</a>
-<a href="../about.html">About</a>
-</nav>
-<button class="btn ghost" data-connect data-wallet-label>Connect wallet</button>
+  <a class="brand" href="../index.html"><img class="pixel" src="../assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
+  <nav class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../moerverse.html">Moerverse</a>
+    <a class="gated-link" hidden href="../scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="../academy.html">Academy</a>
+    <a class="gated-link" hidden href="../flip.html">Flip</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
 <main class="page wrap lesson">
+<div class="holder-gate" id="holder-gate">
+  <h2>Holders only</h2>
+  <p>Connect a wallet on Base that holds Based Ape Punks.</p>
+  <p><button class="btn" type="button" data-connect>Connect wallet</button></p>
+</div>
+<div class="holder-only">
 <p class="kicker">Based Moer Academy</p>
 <h2>06 · Base and wallets</h2><p>A wallet is a key, not a login. This site’s Connect button only asks for an address. It does not mint or spend. We will never ask for a seed phrase.</p>
 
 <p><button class="btn" type="button" data-complete="06">Mark lesson complete</button></p>
 <img class="media" src="../assets/academy/bos.png" alt="Based Moer Academy chart" />
 <p><a href="../academy.html">Back to Academy</a></p>
+</div>
 </main>
 <footer class="footer"><div class="wrap">
 <div class="tech-logos">
@@ -41,5 +48,6 @@
 Based Moer Academy · education only · not financial advice
 </div></footer>
 <script src="../js/site.js"></script>
+<script src="../js/gate.js"></script>
 <script src="../js/academy.js"></script>
 </body></html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moe AI Live — Based Moer</title>
-  <meta name="description" content="Live 4H market-structure setups from the Moe AI engine. Data from the Based Moer API." />
+  <meta name="description" content="Live 4H market-structure engine. Ape Punks holders." />
   <link rel="canonical" href="https://basedmoer.com/scanner.html" />
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -15,17 +15,28 @@
   <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a class="active" href="scanner.html">Moe AI</a>
     <a href="moerverse.html">Moerverse</a>
-    <a href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="scanner.html" class="active">Moe AI</a>
+    <a class="gated-link" hidden href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="flip.html">Flip</a>
     <a href="about.html">About</a>
   </nav>
-  <a class="btn ghost" href="https://moe-ai-production.up.railway.app/docs" target="_blank" rel="noreferrer">API</a>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
+
 <main class="page wrap">
+
+<div class="holder-gate" id="holder-gate">
+  <h2>Holders only</h2>
+  <p>Connect a wallet on Base that holds Based Ape Punks to open this room.</p>
+  <p><button class="btn" type="button" data-connect data-wallet-label>Connect wallet</button></p>
+  <p style="margin-top:10px"><a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Contract on Basescan</a></p>
+</div>
+
+  <div class="holder-only">
   <p class="kicker">Moe AI market engine</p>
-  <h2>Live structure. Not a feed of noise.</h2>
-  <p class="lede">4H break of structure, full-leg Fibonacci, entry 0.50–0.786, stop at origin, target 1.59, one open signal per pair. The table below is whatever the API returns right now.</p>
+  <h2>Live structure.</h2>
+  <p class="lede">4H BOS. Full-leg Fibonacci. One open signal per pair. Table is the API right now.</p>
   <div class="pulse" style="margin:24px 0">
     <div><span>Engine</span><b id="engine-status">…</b></div>
     <div><span>Open</span><b id="open-count">—</b></div>
@@ -43,19 +54,25 @@
   </div>
   <p id="activity-open" style="margin-top:16px;color:#9a958b"></p>
   <span id="activity-refresh" hidden></span>
-  <div class="grid2" style="margin-top:28px">
-    <article class="card">
-      <h3>How a setup is born</h3>
-      <p>Find local 4H structure. Wait for a break. Measure the whole leg including wicks. Post only if price is still in the zone and no open signal exists for that pair.</p>
-    </article>
-    <article class="card">
-      <h3>What this is not</h3>
-      <p>Not a managed account. Not a promise. Missed and stopped ideas exist. Read Academy before you treat a row as an order.</p>
-    </article>
   </div>
 </main>
-<footer class="footer"><div class="wrap">basedmoer.com · not financial advice</div></footer>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><strong>Based Moer</strong><p>Pixel universe and market-structure engine on Base. Not financial advice.</p></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="moerverse.html">Moerverse</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
+      <a href="https://x.com/basedmoer">X · Based Moer</a>
+      <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Ape Punks contract</a>
+    </div>
+  </div>
+  basedmoer.com · Base
+</div></footer>
 <script src="js/site.js"></script>
+<script src="js/gate.js"></script>
 <script src="js/scanner.js"></script>
-</body>
-</html>
+</body></html>

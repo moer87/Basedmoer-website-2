@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Academy — Based Moer</title>
-  <meta name="description" content="Moe Academy: market structure, break of structure, Fibonacci, risk, and how the Moe AI scanner works. Education only." />
+  <meta name="description" content="Moe Academy for Based Ape Punks holders." />
   <link rel="canonical" href="https://basedmoer.com/academy.html" />
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -15,30 +15,56 @@
   <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="scanner.html">Moe AI</a>
     <a href="moerverse.html">Moerverse</a>
-    <a class="active" href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="academy.html" class="active">Academy</a>
+    <a class="gated-link" hidden href="flip.html">Flip</a>
     <a href="about.html">About</a>
   </nav>
-  <a class="btn ghost" href="scanner.html">Live engine</a>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
+
 <main class="page wrap">
+
+<div class="holder-gate" id="holder-gate">
+  <h2>Holders only</h2>
+  <p>Connect a wallet on Base that holds Based Ape Punks to open this room.</p>
+  <p><button class="btn" type="button" data-connect data-wallet-label>Connect wallet</button></p>
+  <p style="margin-top:10px"><a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Contract on Basescan</a></p>
+</div>
+
+  <div class="holder-only">
   <p class="kicker">Moe Academy</p>
   <h2>Learn the map before the row.</h2>
-  <p class="lede">Six lessons. One exam. Progress stays in this browser. This is education about how the project thinks — not a signal service and not financial advice.</p>
   <article class="card" style="margin:20px 0"><h3>Progress</h3><p id="academy-progress">0 / 6 lessons completed</p></article>
   <div class="grid3">
-    <article class="card" data-lesson="01"><h3>01 Structure</h3><p>HH, HL, LH, LL.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/01-risk.html">Open</a></p></article>
-    <article class="card" data-lesson="02"><h3>02 BOS</h3><p>When structure actually breaks.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/02-structure.html">Open</a></p></article>
-    <article class="card" data-lesson="03"><h3>03 Fibonacci</h3><p>Zone after expansion.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/03-bos.html">Open</a></p></article>
-    <article class="card" data-lesson="04"><h3>04 Coordinates</h3><p>Entry, stop, target.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/04-fib.html">Open</a></p></article>
-    <article class="card" data-lesson="05"><h3>05 Risk</h3><p>A setup is not an outcome.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/05-moe.html">Open</a></p></article>
-    <article class="card" data-lesson="06"><h3>06 The engine</h3><p>How Moe AI records a life cycle.</p><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/06-base.html">Open</a></p></article>
+    <article class="card" data-lesson="01"><h3>01 Structure</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/01-risk.html">Open</a></p></article>
+    <article class="card" data-lesson="02"><h3>02 BOS</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/02-structure.html">Open</a></p></article>
+    <article class="card" data-lesson="03"><h3>03 Fibonacci</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/03-bos.html">Open</a></p></article>
+    <article class="card" data-lesson="04"><h3>04 Coordinates</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/04-fib.html">Open</a></p></article>
+    <article class="card" data-lesson="05"><h3>05 Risk</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/05-moe.html">Open</a></p></article>
+    <article class="card" data-lesson="06"><h3>06 The engine</h3><p class="lesson-state">NOT COMPLETE</p><p><a href="academy/06-base.html">Open</a></p></article>
   </div>
   <p style="margin-top:22px"><a class="btn" href="academy/exam.html">Path exam</a></p>
+  </div>
 </main>
-<footer class="footer"><div class="wrap">Academy · education only</div></footer>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><strong>Based Moer</strong><p>Pixel universe and market-structure engine on Base. Not financial advice.</p></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="moerverse.html">Moerverse</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
+      <a href="https://x.com/basedmoer">X · Based Moer</a>
+      <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Ape Punks contract</a>
+    </div>
+  </div>
+  basedmoer.com · Base
+</div></footer>
 <script src="js/site.js"></script>
+<script src="js/gate.js"></script>
 <script src="js/academy.js"></script>
-</body>
-</html>
+</body></html>

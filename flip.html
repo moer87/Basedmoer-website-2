@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Flip Game — Based Moer</title>
-  <meta name="description" content="Based Moer Flip Game. ETH on Base after Sepolia tests. Not live." />
+  <meta name="description" content="On-chain flip. Holders only. Not deployed." />
   <link rel="canonical" href="https://basedmoer.com/flip.html" />
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -15,19 +15,48 @@
   <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="scanner.html">Moe AI</a>
     <a href="moerverse.html">Moerverse</a>
-    <a href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="flip.html" class="active">Flip</a>
     <a href="about.html">About</a>
   </nav>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
+
 <main class="page wrap">
+
+<div class="holder-gate" id="holder-gate">
+  <h2>Holders only</h2>
+  <p>Connect a wallet on Base that holds Based Ape Punks to open this room.</p>
+  <p><button class="btn" type="button" data-connect data-wallet-label>Connect wallet</button></p>
+  <p style="margin-top:10px"><a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Contract on Basescan</a></p>
+</div>
+
+  <div class="holder-only">
   <p class="kicker">On-chain · later</p>
   <h2>Flip Game is designed. Not deployed.</h2>
   <img class="pixel" src="assets/token.gif" alt="MOER coin" style="width:140px;margin:24px 0" />
-  <p class="lede">ETH only at launch. Hard wallet and daily limits. Sepolia first. This page will not take a bet until the contract is public and tested.</p>
+  <p class="lede">ETH only at launch. Sepolia first. This page will not take a bet.</p>
+  </div>
 </main>
-<footer class="footer"><div class="wrap">basedmoer.com</div></footer>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><strong>Based Moer</strong><p>Pixel universe and market-structure engine on Base. Not financial advice.</p></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="moerverse.html">Moerverse</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
+      <a href="https://x.com/basedmoer">X · Based Moer</a>
+      <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Ape Punks contract</a>
+    </div>
+  </div>
+  basedmoer.com · Base
+</div></footer>
 <script src="js/site.js"></script>
-</body>
-</html>
+<script src="js/gate.js"></script>
+
+</body></html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moerverse — Based Moer</title>
-  <meta name="description" content="Bald Moe Genesis and Based Ape Punks. Pixel art, lore, galleries and the official trait generator." />
+  <meta name="description" content="Bald Moe Genesis, Based Ape Punks and the official trait preview." />
   <link rel="canonical" href="https://basedmoer.com/moerverse.html" />
   <link rel="icon" href="assets/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -15,45 +15,68 @@
   <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="scanner.html">Moe AI</a>
-    <a class="active" href="moerverse.html">Moerverse</a>
-    <a href="academy.html">Academy</a>
+    <a href="moerverse.html" class="active">Moerverse</a>
+    <a class="gated-link" hidden href="scanner.html">Moe AI</a>
+    <a class="gated-link" hidden href="academy.html">Academy</a>
+    <a class="gated-link" hidden href="flip.html">Flip</a>
     <a href="about.html">About</a>
   </nav>
-  <a class="btn ghost" href="generator.html">Generator</a>
+  <button class="btn ghost" type="button" data-connect data-wallet-label>Connect wallet</button>
 </div></header>
+
 <main class="page wrap">
   <p class="kicker">Creative universe</p>
-  <h2>One world. Two collections. More later.</h2>
-  <p class="lede">Moerverse is the art layer of Based Moer. NFTs live here. They are not the whole project.</p>
+  <h2>One world. Two collections.</h2>
+  <p class="lede">NFTs live here. They are not the whole project.</p>
   <div class="grid2" style="margin-top:28px">
     <article class="card">
       <p class="kicker">Coming</p>
       <h3>Bald Moe Genesis</h3>
-      <p>222 pieces plus 21 Singular Fragments. Identity, memory, parallel states. Art is ready. Mint is not open.</p>
-      <div class="pills"><span>222</span><span>Genesis</span><span>1/1 fragments</span><span>Base</span></div>
+      <p>222 pieces plus 21 Singular Fragments. Art ready. Mint not open.</p>
+      <div class="pills"><span>222</span><span>Genesis</span><span>Base</span></div>
       <p><a href="https://oncyber.io/basedmoer" target="_blank" rel="noreferrer">OnCyber gallery ↗</a></p>
       <img class="pixel" src="assets/moerverse-preview.png" alt="Bald Moe grid" />
     </article>
     <article class="card">
       <p class="kicker">Mint paused</p>
       <h3>Based Ape Punks</h3>
-      <p>2,222 animated travelers on Base. Full scanner and dashboard access when gating ships. Genesis keeps alpha rights on top.</p>
+      <p>2,222 on Base. Holding one unlocks Moe AI, Academy and Flip on this site.</p>
       <div class="pills"><span>2,222</span><span>Animated</span><span>Base</span></div>
-      <p><a href="https://oncyber.io/basedapepunks" target="_blank" rel="noreferrer">OnCyber gallery ↗</a><br>
-         <a href="https://launchmynft.io/collections/0x8d6fe4D9557C0aAb2a9206eB652E8243fC4e864A/wEzTB3amb90K4xcut8Az" target="_blank" rel="noreferrer">LaunchMyNFT ↗</a></p>
+      <p><a href="https://oncyber.io/basedapepunks" target="_blank" rel="noreferrer">OnCyber ↗</a><br>
+         <a href="https://launchmynft.io/collections/0x8d6fe4D9557C0aAb2a9206eB652E8243fC4e864A/wEzTB3amb90K4xcut8Az" target="_blank" rel="noreferrer">LaunchMyNFT ↗</a><br>
+         <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7" target="_blank" rel="noreferrer">Contract ↗</a></p>
       <img class="pixel" src="assets/ape-punks.gif" alt="Based Ape Punks" />
     </article>
   </div>
-  <article class="card" style="margin-top:18px">
-    <h3>Trait generator</h3>
-    <p>Official Bald Moe preview. Layers load from IPFS.</p>
-    <div class="iframe-box" style="margin-top:12px">
-      <iframe title="Based Moer Generator" src="generator.html"></iframe>
+  <article class="card" style="margin-top:28px" id="generator">
+    <h3>Bald Moe trait preview</h3>
+    <p>Same IPFS layers as the original generator. This is a showcase for the coming mint, not a mint page.</p>
+    <div class="grid2" style="margin-top:16px;align-items:start">
+      <canvas id="moe-canvas" width="800" height="800"></canvas>
+      <div>
+        <div id="moe-traits"></div>
+        <p><button class="btn" type="button" id="moe-download">Download preview</button></p>
+      </div>
     </div>
   </article>
 </main>
-<footer class="footer"><div class="wrap">basedmoer.com · art and product under one name</div></footer>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><strong>Based Moer</strong><p>Pixel universe and market-structure engine on Base. Not financial advice.</p></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="moerverse.html">Moerverse</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
+      <a href="https://x.com/basedmoer">X · Based Moer</a>
+      <a href="https://basescan.org/address/0x5CafB7C0181fEd5b6d62AA331699989861c27AE7">Ape Punks contract</a>
+    </div>
+  </div>
+  basedmoer.com · Base
+</div></footer>
 <script src="js/site.js"></script>
-</body>
-</html>
+<script src="js/gate.js"></script>
+<script src="js/generator.js"></script>
+</body></html>

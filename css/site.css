@@ -96,3 +96,20 @@ table.engine th { color: var(--mute); font-weight: 600; letter-spacing: .06em; t
   .pulse div { border-right: 0; border-bottom: 1px solid var(--line); }
   .nav-links { display: none; }
 }
+
+.gated-link[hidden] { display: none !important; }
+.holder-gate {
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  padding: 28px;
+  margin: 24px 0;
+}
+.trait-row { margin: 10px 0 16px; }
+.trait-row strong { display: block; margin-bottom: 6px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.trait-btn {
+  background: transparent; color: var(--ink); border: 1px solid var(--line);
+  padding: 6px 10px; margin: 0 6px 6px 0; cursor: pointer; font: inherit; font-size: 13px;
+}
+.trait-btn.on { background: var(--ink); color: var(--bg); }
+#moe-canvas { width: min(420px, 100%); height: auto; background: #111; border: 1px solid var(--line); }
+body:not(.is-holder) .holder-only { display: none; }
