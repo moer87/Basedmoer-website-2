@@ -2,121 +2,1356 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Based Moer — Pixel art and Moe AI on Base</title>
-  <meta name="description" content="Based Moer is a creator-owned pixel universe on Base. Moe AI is a live 4H market-structure scanner moving toward an explainable trading protocol." />
-  <link rel="canonical" href="https://basedmoer.com/" />
-  <meta property="og:title" content="Based Moer" />
-  <meta property="og:description" content="Pixel art universe and live market engine on Base." />
-  <meta property="og:image" content="https://basedmoer.com/assets/hero-face.png" />
-  <meta property="og:url" content="https://basedmoer.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="assets/logo.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f19" />
+  <title>Based Moer | Moerverse Art Generator</title>
+  <meta
+    name="description"
+    content="Based Moer art generator for Bald Moe Genesis fragments. Preview traits, build custom combinations, and download your creation."
+  />
+  <link rel="icon" type="image/x-icon" href="https://ipfs.io/ipfs/bafkreibvnz5oke2g2shbwgwcevh33y3kenpqg3csa5sekkcwso5u4thlzq" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --surface-dark: #0f172a;
+      --text: #101828;
+      --text-light: #667085;
+      --text-dark: #e5eefb;
+      --muted: #98a2b3;
+      --border: rgba(16, 24, 40, 0.08);
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.12);
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 32%),
+        linear-gradient(180deg, #070b13 0%, #0b0f19 18%, #ffffff 18%, #ffffff 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    canvas {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 24px, var(--container));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .main-nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .main-nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .icon-link,
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .icon-link:hover,
+    .menu-toggle:hover {
+      transform: translateY(-1px);
+      color: var(--accent);
+      border-color: rgba(59, 130, 246, 0.28);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .hero {
+      color: #fff;
+      padding: 72px 0 30px;
+      background:
+        radial-gradient(circle at top right, rgba(96, 165, 250, 0.13), transparent 28%),
+        linear-gradient(180deg, #0b0f19 0%, #111827 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      color: #bfdbfe;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .hero-lead {
+      font-size: 1.2rem;
+      color: #dbeafe;
+      margin-bottom: 12px;
+      max-width: 620px;
+    }
+
+    .hero-text {
+      font-size: 1rem;
+      color: #cbd5e1;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.24);
+    }
+
+    .button-primary:hover {
+      background: #2563eb;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .button-secondary:hover {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(96, 165, 250, 0.25);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .hero-badges span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+    }
+
+    .hero-art {
+      width: 100%;
+      max-width: 420px;
+      border-radius: var(--radius);
+      box-shadow: 0 28px 64px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .hero-card strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .hero-card p {
+      color: #cbd5e1;
+      font-size: 0.96rem;
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-alt {
+      background: #f8fafc;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 34px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      color: #101828;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--text-light);
+      font-size: 1.03rem;
+    }
+
+    .preview-shell,
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .preview-shell {
+      max-width: 880px;
+      margin: 0 auto 28px;
+      padding: 26px;
+    }
+
+    .preview-title {
+      font-size: 1.7rem;
+      text-align: center;
+      color: #101828;
+      margin-bottom: 18px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .preview-container {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 2px solid rgba(59, 130, 246, 0.14);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    #previewCanvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      aspect-ratio: 1 / 1;
+    }
+
+    .download-btn {
+      width: 100%;
+      min-height: 50px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.22);
+    }
+
+    .download-btn:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    .current-traits {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f8fbff;
+      border: 1px solid rgba(59, 130, 246, 0.12);
+    }
+
+    .current-traits h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #101828;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .current-traits h3 i {
+      color: var(--accent);
+    }
+
+    #currentTraits {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .traits-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .traits-title {
+      font-size: 1.9rem;
+      text-align: center;
+      color: #101828;
+      margin-bottom: 14px;
+    }
+
+    .traits-lead {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .trait-category {
+      margin-bottom: 18px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    }
+
+    .trait-category h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+      color: #101828;
+    }
+
+    .trait-category h3 i {
+      color: var(--accent);
+    }
+
+    .trait-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+      gap: 12px;
+    }
+
+    .trait-option {
+      border-radius: 16px;
+      border: 2px solid transparent;
+      background: #fff;
+      padding: 12px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-height: 118px;
+      user-select: none;
+    }
+
+    .trait-option:hover {
+      border-color: rgba(59, 130, 246, 0.42);
+      transform: translateY(-2px);
+    }
+
+    .trait-option.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .trait-option img {
+      width: 62px;
+      height: 62px;
+      border-radius: 10px;
+      object-fit: contain;
+      border: 1px solid rgba(59, 130, 246, 0.14);
+      background: #f8fbff;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    .trait-option .none-swatch {
+      width: 62px;
+      height: 62px;
+      border-radius: 10px;
+      border: 1px dashed rgba(59, 130, 246, 0.22);
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .trait-option span {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: #101828;
+      line-height: 1.2;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 24px;
+      text-align: left;
+    }
+
+    .info-card i {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 1.12rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.12rem;
+      color: #101828;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer {
+      background: #09101d;
+      color: #dbe4f0;
+      padding: 42px 0 30px;
+      margin-top: 72px;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    .footer-brand h3 {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .footer-brand p {
+      color: #9fb2cc;
+      font-size: 0.94rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      min-height: 42px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+      color: #e5eefb;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      background: rgba(59, 130, 246, 0.14);
+      border-color: rgba(96, 165, 250, 0.45);
+    }
+
+    .footer-note {
+      color: #9fb2cc;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trait-options {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .main-nav {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .header-inner {
+        position: relative;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .preview-shell {
+        padding: 20px;
+      }
+
+      .trait-category {
+        padding: 16px;
+      }
+
+      .trait-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-lead {
+        font-size: 1.08rem;
+      }
+
+      .hero-text {
+        font-size: 0.98rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-art,
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links a {
+        width: 220px;
+      }
+
+      .section-heading h2 {
+        font-size: 1.85rem;
+      }
+
+      .traits-title {
+        font-size: 1.6rem;
+      }
+
+      .preview-title {
+        font-size: 1.45rem;
+      }
+
+      .trait-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .trait-option {
+        min-height: 110px;
+        padding: 10px 8px;
+      }
+
+      .trait-option img,
+      .trait-option .none-swatch {
+        width: 54px;
+        height: 54px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .trait-options {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="nav"><div class="wrap nav-inner">
-  <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
-  <nav class="nav-links">
-    <a class="active" href="index.html">Home</a>
-    <a href="scanner.html">Moe AI</a>
-    <a href="moerverse.html">Moerverse</a>
-    <a href="academy.html">Academy</a>
-    <a href="about.html">About</a>
-  </nav>
-  <a class="btn" href="scanner.html">Live engine</a>
-</div></header>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="https://based-moer.vercel.app/" target="_blank" rel="noreferrer" aria-label="Based Moer main website">
+        <img src="https://ipfs.io/ipfs/bafkreibvnz5oke2g2shbwgwcevh33y3kenpqg3csa5sekkcwso5u4thlzq" alt="Based Moer logo" />
+        <span>BASED MOER</span>
+      </a>
 
-<main>
-  <section class="wrap hero">
-    <div>
-      <p class="kicker">Base · pixel art · market structure</p>
-      <h1>A world you can collect.<br>An engine you can read.</h1>
-      <p class="lede">Based Moer is a solo-built universe on Base. Moe AI already scans 4H structure. The long game is an explainable protocol humans and agents can both use.</p>
-      <a class="btn" href="scanner.html">See live setups</a>
-      <a class="btn ghost" href="moerverse.html">Enter Moerverse</a>
-    </div>
-    <div class="hero-visual">
-      <img class="pixel" src="assets/hero-face.png" alt="Bald Moe looking up" />
-    </div>
-  </section>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#traits">Select Traits</a>
+        <a href="#generator">Generator</a>
+        <a href="#about">About</a>
+        <a href="#links">Links</a>
+      </nav>
 
-  <section class="wrap">
-    <div class="pulse" id="home-pulse">
-      <div><span>Engine</span><b id="engine-status">…</b></div>
-      <div><span>Open setups</span><b id="open-count">—</b></div>
-      <div><span>Closed sample</span><b id="closed-count">—</b></div>
-      <div><span>Net R</span><b id="net-r">—</b></div>
-    </div>
-    <p class="err" id="engine-error"></p>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <p class="kicker">Products</p>
-      <h2>What exists today.</h2>
-      <div class="grid3">
-        <article class="card">
-          <h3>Moe AI</h3>
-          <p>Live 4H BOS scanner. Fib map on the full breakout leg. One open idea per pair. Discord + API + Supabase.</p>
-          <p><a href="scanner.html">Open the engine →</a></p>
-        </article>
-        <article class="card">
-          <h3>Moerverse</h3>
-          <p>Bald Moe Genesis (222) and Based Ape Punks (2222). Lore, OnCyber galleries, trait generator.</p>
-          <p><a href="moerverse.html">See collections →</a></p>
-        </article>
-        <article class="card">
-          <h3>Academy</h3>
-          <p>Short path through structure, BOS, Fibonacci, risk, and how the scanner actually decides.</p>
-          <p><a href="academy.html">Start lessons →</a></p>
-        </article>
+      <div class="header-actions">
+        <a class="icon-link" href="https://x.com/basedmoer" target="_blank" rel="noreferrer" aria-label="Based Moer on X">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a class="icon-link" href="https://linktr.ee/basedmoer" target="_blank" rel="noreferrer" aria-label="Based Moer Linktree">
+          <i class="fa-solid fa-link"></i>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="section">
-    <div class="wrap">
-      <p class="kicker">Now / next</p>
-      <h2>Built in public.</h2>
-      <div class="grid2">
-        <article class="card">
-          <h3>Live</h3>
-          <p>Scanner on Railway. Dual Discord webhooks. Stats and learning endpoints. This site on Vercel.</p>
-        </article>
-        <article class="card">
-          <h3>Next</h3>
-          <p>CORS-clean public API. Holder gating. Signal Registry on Base Sepolia. Flip game after testnet. Token later — not now.</p>
-        </article>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Moerverse art generator</div>
+          <h1>BASED MOER<br />GENERATOR</h1>
+          <p class="hero-lead">Create and preview Bald Moe Genesis fragments.</p>
+          <p class="hero-text">
+            Mix traits from the first 222 fragments of the Moerverse, build custom combinations,
+            and download your preview in a clean, mobile-friendly tool.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#traits">Select Traits</a>
+            <a class="button button-secondary" href="https://basedmoer.gitbook.io/based-moer" target="_blank" rel="noreferrer">Read Manifesto</a>
+          </div>
+
+          <div class="hero-badges" aria-label="Project status">
+            <span>Base</span>
+            <span>Pixel Art</span>
+            <span>Moerverse</span>
+            <span>Genesis Fragments</span>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="hero-card">
+            <strong>Current focus</strong>
+            <p>Preview traits, build fragments, and keep the experience simple, clear, and professional.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="footer"><div class="wrap">
-  <div class="footer-grid">
-    <div>
-      <strong>Based Moer</strong>
-      <p>Pixel universe and market-structure engine on Base. Not financial advice.</p>
+    <section class="section section-alt" id="traits">
+      <div class="container">
+        <div class="traits-shell">
+          <div class="section-heading">
+            <p class="section-kicker">Select Traits</p>
+            <h2>Choose Bald Moe fragments</h2>
+            <p>Pick one trait from each category before building the preview below.</p>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-mountain"></i> Background</h3>
+            <div class="trait-options" id="backgroundTraits"></div>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-user"></i> Body</h3>
+            <div class="trait-options" id="bodyTraits"></div>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-ear-listen"></i> Ear</h3>
+            <div class="trait-options" id="earTraits"></div>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-eye"></i> Eye</h3>
+            <div class="trait-options" id="eyeTraits"></div>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-glasses"></i> Eye Attachment</h3>
+            <div class="trait-options" id="eyeAttachmentTraits"></div>
+          </div>
+
+          <div class="trait-category">
+            <h3><i class="fa-solid fa-hat-cowboy"></i> Head</h3>
+            <div class="trait-options" id="headTraits"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="generator">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Generator</p>
+          <h2>Build a Bald Moe fragment</h2>
+          <p>Choose traits from each category to create a custom preview.</p>
+        </div>
+
+        <div class="preview-shell">
+          <h2 class="preview-title"><i class="fa-solid fa-image"></i> Build Your Bald Moe Fragment</h2>
+          <div class="preview-grid">
+            <div class="preview-container">
+              <canvas id="previewCanvas" width="400" height="400"></canvas>
+            </div>
+            <button id="downloadBtn" class="download-btn">
+              <i class="fa-solid fa-download"></i> Download Preview
+            </button>
+
+            <div class="current-traits">
+              <h3><i class="fa-solid fa-list-check"></i> Current Traits</h3>
+              <div id="currentTraits">Loading traits...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <div class="section-heading">
+              <p class="section-kicker">About</p>
+              <h2>Bald Moe and the Moerverse</h2>
+              <p>The generator sits inside the larger Based Moer story world.</p>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card">
+                <i class="fa-solid fa-pen-nib"></i>
+                <h3>Fragments of Moe</h3>
+                <p>Every Bald Moe is a preserved fragment from a larger dream, memory, or identity inside the Moerverse.</p>
+              </div>
+
+              <div class="info-card">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>222 Genesis NFTs</h3>
+                <p>The genesis collection forms the foundation of the wider ecosystem and future storytelling.</p>
+              </div>
+
+              <div class="info-card">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Future Expansions</h3>
+                <p>Recovered Dream episodes, future fragments, and new collections will grow from this base.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-heading">
+              <p class="section-kicker">Project network</p>
+              <h2>Quick access to the main pieces of the ecosystem</h2>
+              <p>Everything relevant in one place.</p>
+            </div>
+
+            <div class="info-grid">
+              <a class="info-card" href="https://based-moer.vercel.app/" target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-house"></i>
+                <h3>Main Website</h3>
+                <p>Back to the Based Moer homepage.</p>
+              </a>
+
+              <a class="info-card" href="https://linktr.ee/basedmoer" target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-link"></i>
+                <h3>Linktree</h3>
+                <p>Central hub for all Based Moer links.</p>
+              </a>
+
+              <a class="info-card" href="https://discord.gg/B6Pu9fARTX" target="_blank" rel="noreferrer">
+                <i class="fa-brands fa-discord"></i>
+                <h3>Discord</h3>
+                <p>Community space for updates and discussion.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="https://ipfs.io/ipfs/bafkreibvnz5oke2g2shbwgwcevh33y3kenpqg3csa5sekkcwso5u4thlzq" alt="Based Moer logo" />
+        <div>
+          <h3>BASED MOER</h3>
+          <p>Fragments of a dream.</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://based-moer.vercel.app/" target="_blank" rel="noreferrer">Main Site</a>
+        <a href="https://linktr.ee/basedmoer" target="_blank" rel="noreferrer">Linktree</a>
+        <a href="https://discord.gg/B6Pu9fARTX" target="_blank" rel="noreferrer">Discord</a>
+        <a href="https://x.com/basedmoer" target="_blank" rel="noreferrer">X</a>
+      </div>
+
+      <p class="footer-note">© 2026 Based Moer • Built by Moe (MOER87).</p>
     </div>
-    <div>
-      <a href="scanner.html">Moe AI Live</a>
-      <a href="moerverse.html">Moerverse</a>
-      <a href="academy.html">Academy</a>
-      <a href="flip.html">Flip Game</a>
-    </div>
-    <div>
-      <a href="https://discord.gg/B6Pu9fARTX">Discord</a>
-      <a href="https://x.com/basedmoer">X · Based Moer</a>
-      <a href="https://x.com/MoeeR87">X · Builder</a>
-      <a href="https://linktr.ee/basedmoer">Linktree</a>
-    </div>
-  </div>
-  basedmoer.com · always DYOR
-</div></footer>
-<script src="js/site.js"></script>
-<script src="js/scanner.js"></script>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const traitData = {
+        backgrounds: [
+          { name: "Mint Green", cid: "bafkreigndanezt3yf3rlgoehh4wnhasloqso6x2tddku6qtqki6rcc2mt4" },
+          { name: "Pale Lime", cid: "bafkreifi5ntqmzl6mmq6c52d2pc3vfbfilkhdw4g6vqmkdsnqcbnpww7lq" },
+          { name: "Rose Punk", cid: "bafkreie5x6u5u4mt4xjdctu36humogfjhyrgdg6dueaffgvzvielabl6nm" }
+        ],
+        bodies: [
+          { name: "Normal", cid: "bafkreib6zjykxl2qzn5ljeezwn4lpnd4m3c3qgeibmpwpoxejf44bkhunq" }
+        ],
+        ears: [
+          { name: "Golden", cid: "bafkreig6uvom4cwwfwo6k5akwqmgtnzfvtjugak43wzxy6v3e4m2nr7ogu" },
+          { name: "Belle of Asia", cid: "bafkreidbzbjgy4d6iihzaujencesrfdwf7fs6f65gnxwqgx3kstfepgk4y" }
+        ],
+        eyes: [
+          { name: "Neutral", cid: "bafkreihmlxwju4egc2eiiyupuqiwuoth2vst4kxxqluncb4mmzr7eqnksy" },
+          { name: "Shocked", cid: "bafkreigv32mmrtmjqkkgdifmbvusls26bi72etjz36pc2kcs2uvmtgadgq" }
+        ],
+        eyeAttachments: [
+          { name: "None", cid: null },
+          { name: "Night Specs", cid: "bafkreidmoymytmes2y2f3qx5gv63wsiogrjqvcbtdnnef74dw7vafi53ky" },
+          { name: "Reading", cid: "bafkreicaedz6y6roqxnzahmod7geafa6ccklw5id5jdfesdezqfvzgluua" },
+          { name: "Emerald Optic", cid: "bafkreib64ht25jr6feos6g35iw553qzmbgyihe7dkeyvwouqm4pw2aqpce" }
+        ],
+        heads: [
+          { name: "None", cid: null },
+          { name: "Bandana", cid: "bafkreiftbb53qtpfxpprwh36nksi2k7qvv7lr2cfcbupcmrslbpju6i32y" },
+          { name: "Fedora", cid: "bafkreif3vqw2emcbshxayyhshtmpdg6vtzawzttqlwydbtvyes63f76nxi" },
+          { name: "Base Cap", cid: "bafkreigam3dr6t6tzs4bgxxpqa52r5sj7fme33pnopjgbanumrxl2xfm2y" }
+        ]
+      };
+
+      const currentSelection = {
+        background: traitData.backgrounds[0],
+        body: traitData.bodies[0],
+        ear: traitData.ears[0],
+        eye: traitData.eyes[0],
+        eyeAttachment: traitData.eyeAttachments[0],
+        head: traitData.heads[0]
+      };
+
+      const canvas = document.getElementById("previewCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.imageSmoothingEnabled = false;
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+      const siteHeader = document.getElementById("siteHeader");
+      const currentTraits = document.getElementById("currentTraits");
+      const downloadBtn = document.getElementById("downloadBtn");
+
+      const imageCache = new Map();
+      const gateways = [
+        "https://ipfs.io/ipfs/",
+        "https://gateway.pinata.cloud/ipfs/",
+        "https://cloudflare-ipfs.com/ipfs/"
+      ];
+
+      function loadImage(cid) {
+        if (!cid) return Promise.resolve(null);
+        if (imageCache.has(cid)) return imageCache.get(cid);
+
+        const promise = new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          let index = 0;
+
+          const tryNext = () => {
+            if (index >= gateways.length) {
+              reject(new Error(`Failed to load image: ${cid}`));
+              return;
+            }
+            img.src = `${gateways[index]}${cid}`;
+            index += 1;
+          };
+
+          img.onload = () => resolve(img);
+          img.onerror = tryNext;
+          tryNext();
+        });
+
+        imageCache.set(cid, promise);
+        return promise;
+      }
+
+      function createTraitImage(cid, name) {
+        if (!cid) {
+          const none = document.createElement("div");
+          none.className = "none-swatch";
+          none.textContent = "None";
+          return none;
+        }
+
+        const img = document.createElement("img");
+        img.alt = name;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.dataset.fallbacks = JSON.stringify(gateways.map(g => `${g}${cid}`));
+        img.src = `${gateways[0]}${cid}`;
+
+        img.onerror = () => {
+          const fallbacks = JSON.parse(img.dataset.fallbacks || "[]");
+          const next = fallbacks.shift();
+          img.dataset.fallbacks = JSON.stringify(fallbacks);
+          if (next) img.src = next;
+        };
+
+        return img;
+      }
+
+      function updateTraitsDisplay() {
+        currentTraits.textContent =
+          `Background: ${currentSelection.background.name} • ` +
+          `Body: ${currentSelection.body.name} • ` +
+          `Ear: ${currentSelection.ear.name} • ` +
+          `Eye: ${currentSelection.eye.name} • ` +
+          `Eye Attachment: ${currentSelection.eyeAttachment.name} • ` +
+          `Head: ${currentSelection.head.name}`;
+      }
+
+      async function drawPreview() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#f8fbff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const layers = [
+          currentSelection.background,
+          currentSelection.body,
+          currentSelection.ear,
+          currentSelection.eye,
+          currentSelection.eyeAttachment,
+          currentSelection.head
+        ];
+
+        try {
+          for (const layer of layers) {
+            if (!layer || !layer.cid) continue;
+            const img = await loadImage(layer.cid);
+            if (img) ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          }
+          updateTraitsDisplay();
+        } catch (error) {
+          console.error(error);
+          ctx.fillStyle = "#64748b";
+          ctx.font = "600 16px Inter";
+          ctx.textAlign = "center";
+          ctx.fillText("Loading trait images...", canvas.width / 2, canvas.height / 2);
+        }
+      }
+
+      function selectTrait(categoryKey, trait, optionEl) {
+        currentSelection[categoryKey] = trait;
+
+        const container = optionEl.closest(".trait-options");
+        if (container) {
+          container.querySelectorAll(".trait-option").forEach(el => el.classList.remove("selected"));
+        }
+        optionEl.classList.add("selected");
+        drawPreview();
+      }
+
+      function createTraitSelectors() {
+        const map = {
+          backgrounds: { key: "background", id: "backgroundTraits" },
+          bodies: { key: "body", id: "bodyTraits" },
+          ears: { key: "ear", id: "earTraits" },
+          eyes: { key: "eye", id: "eyeTraits" },
+          eyeAttachments: { key: "eyeAttachment", id: "eyeAttachmentTraits" },
+          heads: { key: "head", id: "headTraits" }
+        };
+
+        Object.entries(map).forEach(([collectionKey, config]) => {
+          const container = document.getElementById(config.id);
+          if (!container) return;
+
+          traitData[collectionKey].forEach((trait) => {
+            const option = document.createElement("div");
+            option.className = "trait-option";
+
+            option.appendChild(createTraitImage(trait.cid, trait.name));
+
+            const label = document.createElement("span");
+            label.textContent = trait.name;
+            option.appendChild(label);
+
+            option.addEventListener("click", () => {
+              selectTrait(config.key, trait, option);
+            });
+
+            container.appendChild(option);
+          });
+        });
+
+        setTimeout(() => {
+          ["background", "body", "ear", "eye", "eyeAttachment", "head"].forEach((key) => {
+            const container = document.getElementById(`${key === "eyeAttachment" ? "eyeAttachment" : key}Traits`);
+            if (!container) return;
+            const first = container.querySelector(".trait-option");
+            if (first) first.click();
+          });
+        }, 50);
+      }
+
+      function initMobileMenu() {
+        if (!menuToggle || !mainNav) return;
+
+        menuToggle.addEventListener("click", () => {
+          const open = mainNav.classList.toggle("open");
+          menuToggle.setAttribute("aria-expanded", String(open));
+          menuToggle.innerHTML = open
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        mainNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 820) {
+              mainNav.classList.remove("open");
+              menuToggle.setAttribute("aria-expanded", "false");
+              menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+          });
+        });
+      }
+
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (event) => {
+            const href = anchor.getAttribute("href");
+            if (!href || href === "#") return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            event.preventDefault();
+            const headerOffset = (document.querySelector(".site-header")?.offsetHeight || 0) + 14;
+            const elementTop = target.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scrollTo({
+              top: elementTop - headerOffset,
+              behavior: "smooth"
+            });
+          });
+        });
+      }
+
+      function initDownload() {
+        downloadBtn.addEventListener("click", () => {
+          canvas.toBlob((blob) => {
+            if (!blob) return;
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `bald-moe-${Date.now()}.png`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 2500);
+          }, "image/png");
+        });
+      }
+
+      function setHeaderState() {
+        siteHeader.classList.toggle("scrolled", window.scrollY > 12);
+      }
+
+      function init() {
+        initMobileMenu();
+        initSmoothScroll();
+        initDownload();
+        createTraitSelectors();
+        drawPreview();
+        updateTraitsDisplay();
+        setHeaderState();
+
+        window.addEventListener("scroll", setHeaderState, { passive: true });
+        window.addEventListener("orientationchange", () => setTimeout(drawPreview, 150));
+        window.addEventListener("resize", () => setTimeout(drawPreview, 150));
+
+        console.log("Based Moer Generator loaded.");
+      }
+
+      init();
+    });
+  </script>
 </body>
 </html>
