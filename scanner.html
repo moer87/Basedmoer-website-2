@@ -4,68 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moe AI Live — Based Moer</title>
+  <meta name="description" content="Live 4H market-structure setups from the Moe AI engine. Data from the Based Moer API." />
+  <link rel="canonical" href="https://basedmoer.com/scanner.html" />
   <link rel="icon" href="assets/logo.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="moerverse.html">Moerverse</a>
-        <a class="active" href="scanner.html">Scanner</a>
-        <a href="academy.html">Academy</a>
-        <a href="flip.html">Flip Game</a>
-        <a href="about.html">About</a>
-      </nav>
-      <button class="btn ghost" data-connect data-wallet-label>Connect wallet</button>
-    </div>
-  </header>
-  <main class="page wrap">
-    <p class="kicker">Moe AI market engine</p>
-    <h2>MARKET DATA. LIVE.</h2>
-    <p>The Moe AI Live Engine displays current scanner activity from the existing market-structure system. Only information returned by the Moe AI API is shown.</p>
-    <div class="engine-meta">
-      <article class="card"><span>ENGINE</span><b id="engine-status">…</b></article>
-      <article class="card"><span>SCANNER</span><b id="tf-label">4H</b></article>
-      <article class="card"><span>MARKET DATA</span><b id="market-label">KRAKEN</b></article>
-      <article class="card"><span>OPEN SETUPS</span><b id="open-count">—</b></article>
-    </div>
-    <p>Last update <span id="last-update">—</span></p>
-    <p><button class="btn" id="refresh-engine" type="button">Refresh engine</button>
-       <a class="btn ghost" href="https://moe-ai-production.up.railway.app/docs" target="_blank" rel="noreferrer">API docs</a></p>
-    <p class="err" id="engine-error"></p>
-
-    <h3 style="margin:22px 0 8px">Current open setups</h3>
-    <div class="table-wrap">
-      <table class="engine">
-        <thead>
-          <tr>
-            <th>Market</th><th>Direction</th><th>TF</th>
-            <th>Entry zone</th><th>Invalidation</th><th>Target</th>
-            <th>Status</th><th>Updated</th>
-          </tr>
-        </thead>
-        <tbody id="setup-rows"><tr><td colspan="8">Loading…</td></tr></tbody>
-      </table>
-    </div>
-
-    <div class="cards" style="margin-top:22px">
-      <article class="card"><h3>Engine activity</h3><p id="activity-open">—</p><p>Data refreshed <span id="activity-refresh">—</span></p></article>
-      <article class="card"><h3>How the engine reads a setup</h3>
-        <p>1 Identify meaningful 4H market structure.<br>
-        2 Detect the latest valid Break of Structure.<br>
-        3 Measure the breakout leg.<br>
-        4 Monitor the configured retracement zone.<br>
-        5 Track entry, invalidation, target and signal lifecycle.</p>
-      </article>
-      <article class="card"><h3>Honesty</h3><p>Open does not mean filled. Always DYOR. Not financial advice.</p></article>
-    </div>
-  </main>
-  <footer class="footer"><div class="wrap">Based Moer · built on Base · not financial advice · always DYOR</div></footer>
-  <script src="js/site.js"></script>
-  <script src="js/scanner.js"></script>
+<header class="nav"><div class="wrap nav-inner">
+  <a class="brand" href="index.html"><img class="pixel" src="assets/logo.jpg" alt="Based Moer" /> Based Moer</a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a class="active" href="scanner.html">Moe AI</a>
+    <a href="moerverse.html">Moerverse</a>
+    <a href="academy.html">Academy</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a class="btn ghost" href="https://moe-ai-production.up.railway.app/docs" target="_blank" rel="noreferrer">API</a>
+</div></header>
+<main class="page wrap">
+  <p class="kicker">Moe AI market engine</p>
+  <h2>Live structure. Not a feed of noise.</h2>
+  <p class="lede">4H break of structure, full-leg Fibonacci, entry 0.50–0.786, stop at origin, target 1.59, one open signal per pair. The table below is whatever the API returns right now.</p>
+  <div class="pulse" style="margin:24px 0">
+    <div><span>Engine</span><b id="engine-status">…</b></div>
+    <div><span>Open</span><b id="open-count">—</b></div>
+    <div><span>Timeframe</span><b id="tf-label">4H</b></div>
+    <div><span>Venue</span><b id="market-label">Kraken</b></div>
+  </div>
+  <p>Updated <span id="last-update">—</span></p>
+  <p><button class="btn" id="refresh-engine" type="button">Refresh</button></p>
+  <p class="err" id="engine-error"></p>
+  <div class="table-wrap" style="margin-top:18px">
+    <table class="engine">
+      <thead><tr><th>Market</th><th>Dir</th><th>TF</th><th>Entry</th><th>Invalidation</th><th>Target</th><th>Status</th><th>Time</th></tr></thead>
+      <tbody id="setup-rows"><tr><td colspan="8">Loading…</td></tr></tbody>
+    </table>
+  </div>
+  <p id="activity-open" style="margin-top:16px;color:#9a958b"></p>
+  <span id="activity-refresh" hidden></span>
+  <div class="grid2" style="margin-top:28px">
+    <article class="card">
+      <h3>How a setup is born</h3>
+      <p>Find local 4H structure. Wait for a break. Measure the whole leg including wicks. Post only if price is still in the zone and no open signal exists for that pair.</p>
+    </article>
+    <article class="card">
+      <h3>What this is not</h3>
+      <p>Not a managed account. Not a promise. Missed and stopped ideas exist. Read Academy before you treat a row as an order.</p>
+    </article>
+  </div>
+</main>
+<footer class="footer"><div class="wrap">basedmoer.com · not financial advice</div></footer>
+<script src="js/site.js"></script>
+<script src="js/scanner.js"></script>
 </body>
 </html>

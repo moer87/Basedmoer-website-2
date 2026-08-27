@@ -29,6 +29,8 @@
       const dashb = (dash && dash.dashboard) || {};
       const summary = dashb.summary || stats;
       el("open-count").textContent = summary.open != null ? summary.open : "—";
+      if (el("closed-count")) el("closed-count").textContent = summary.closed != null ? summary.closed : (stats.closed != null ? stats.closed : "—");
+      if (el("net-r")) el("net-r").textContent = summary.net_r != null ? summary.net_r : (stats.net_r != null ? stats.net_r : "—");
       el("tf-label").textContent = "4H";
       el("market-label").textContent = "KRAKEN";
       el("last-update").textContent = new Date().toLocaleTimeString();
