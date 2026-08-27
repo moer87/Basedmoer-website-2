@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Based Moer — Dream. Trade. Explore.</title>
   <link rel="icon" href="assets/logo.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -25,73 +23,50 @@
       <button class="btn ghost" data-connect data-wallet-label>Connect wallet</button>
     </div>
   </header>
-  <section class="hero-map">
-    <div class="stars"></div>
-    <div class="wrap hero-copy">
+
+  <section class="stage">
+    <img class="stage-bg" src="assets/sky.jpg" alt="" />
+    <div class="stage-title">
       <p class="kicker">A pixel art universe built on Base</p>
       <h1>DREAM.<br>TRADE.<br>EXPLORE.</h1>
-      <p>Public landing. Islands are doors. Wallet connect unlocks holder tools as they ship.</p>
     </div>
-    <div class="wrap islands">
-      <a class="island i1" href="moerverse.html">
-        <div class="pad">
-          <img class="pixel" src="assets/fragment.png" alt="Moerverse" />
-          <b>MOERVERSE</b>
-          <span>Art · lore · collections</span>
-        </div>
+    <div class="stage-islands">
+      <a class="hotspot hs-nfts" href="moerverse.html">
+        <img src="assets/island-nfts.png" alt="Moerverse" />
+        <em>Moerverse</em>
       </a>
-      <a class="island i2" href="scanner.html">
-        <div class="pad">
-          <img class="pixel" src="assets/character.png" alt="Scanner" />
-          <b>SCANNER</b>
-          <span>Live 4H Moe AI</span>
-        </div>
+      <a class="hotspot hs-academy" href="academy.html">
+        <img src="assets/island-academy.png" alt="Academy" />
+        <em>Academy</em>
       </a>
-      <a class="island i3" href="academy.html">
-        <div class="pad">
-          <img class="pixel" src="assets/logo.png" alt="Academy" />
-          <b>ACADEMY</b>
-          <span>Lessons + exam</span>
-        </div>
+      <a class="hotspot hs-flip" href="flip.html">
+        <img src="assets/island-flip.png" alt="Flip Game" />
+        <em>Flip Game</em>
       </a>
-      <a class="island i4" href="flip.html">
-        <div class="pad">
-          <img class="pixel" src="assets/token.gif" alt="Flip" />
-          <b>FLIP GAME</b>
-          <span>Coming soon</span>
-        </div>
+      <a class="hotspot hs-scanner" href="scanner.html">
+        <img src="assets/island-scanner.png" alt="Scanner" />
+        <em>Scanner</em>
       </a>
-      <a class="island i5" href="https://based-moer-generator.vercel.app/" target="_blank" rel="noreferrer">
-        <div class="pad">
-          <img class="pixel" src="assets/art-preview.gif" alt="Generator" />
-          <b>GENERATOR</b>
-          <span>Bald Moe traits</span>
-        </div>
-      </a>
+    </div>
+    <img class="hero-face pixel" src="assets/hero-face.png" alt="Moe" />
+    <div class="stage-cta">
+      <a class="btn" href="moerverse.html">Enter the Moerverse</a>
+      <a class="btn ghost" href="scanner.html">Open scanner</a>
+    </div>
+    <div class="roster">
+      <img class="pixel" src="assets/moe-t4.png" alt="" />
+      <img class="pixel" src="assets/moe-t5.png" alt="" />
+      <img class="pixel" src="assets/moe-t6.png" alt="" />
+      <img class="pixel" src="assets/bald-moe.png" alt="" />
+      <img class="pixel" src="assets/art-preview.gif" alt="" />
     </div>
   </section>
-  <section class="section">
-    <div class="wrap cards">
-      <article class="card">
-        <h3>Moe AI is live</h3>
-        <p>4H break-of-structure scanner. Discord alerts. API on Railway. One open signal per pair. No fake counts on this page.</p>
-      </article>
-      <article class="card">
-        <h3>Two collections</h3>
-        <p>Based Ape Punks 2222 — mint paused. Based Moer Genesis 222 + 21 fragments — art ready, not minted.</p>
-      </article>
-      <article class="card">
-        <h3>Holder path</h3>
-        <p>Both collections get full scanner + dashboard access. Genesis gets alpha tests and future free mints.</p>
-      </article>
-    </div>
-  </section>
+
   <footer class="footer">
     <div class="wrap">
       <div class="tech">
         <span>Python</span><span>FastAPI</span><span>Supabase</span><span>Railway</span>
-        <span>Vercel</span><span>GitHub</span><span>Base</span><span>Kraken</span>
-        <span>HTML / CSS / JS</span>
+        <span>Vercel</span><span>GitHub</span><span>Base</span>
       </div>
       Based Moer · built on Base · not financial advice · always DYOR
     </div>
